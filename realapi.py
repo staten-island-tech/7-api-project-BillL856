@@ -17,3 +17,16 @@ def getPoke(poke):
 pokemon = getPoke("Bulbasaur")
 print(pokemon) """
 
+import requests
+
+def units(type,unit,unit2,quantity):
+    response = requests.get(f"https://api.unusualunits.com/convert/{type.lower()}/{unit.lower()}/{unit2.lower()}/{quantity.lower()}")
+    if response.status_code !=200:
+        print("Error")
+        return None
+    
+    data=response.json()
+
+
+    
+    
