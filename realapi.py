@@ -22,10 +22,19 @@ import requests
 constantinople=True
 while constantinople==True:
 
-    e1=input("What measurement system are you using. Ex. Time")
-    e2=input("What unit are you converting from. Ex. Second")
-    e3=input("What unit are you converting to. Ex. Day")
-    e4=input("How many units do you want to convert? Ex. 8748989638")
+    import tkinter as tk
+
+    window=tk.Tk()
+    window.title("Converter")
+    window.geometry("640x400")
+    window.resizable(False,False) 
+    prompt = tk.Label(window, text="Type your measurement system below:", font=("Arial", 16))
+    prompt.pack(pady=10) 
+    entry = tk.Entry(window, font=("Arial", 14), width=30)
+    entry.pack(pady=5)
+    result_label = tk.Label(window, text="", font=("Arial", 14, "bold"), fg="blue")
+    result_label.pack(pady=15)
+
     def units(type,unit,unit2,quantity):
     
         response = requests.get(f"https://api.unusualunits.com/convert/{type.lower()}/{unit.lower()}/{unit2.lower()}/{quantity}")
@@ -38,5 +47,5 @@ while constantinople==True:
         "Value":data["result"]
         }
 
-    horastodias=units(e1,e2,e3,e4)
+    horastodias=units(result_label.text(), )
     print(horastodias)
