@@ -26,9 +26,7 @@ def reverse_message():
     result_label.config(text=f"Backwards: {reversed_text}")
 # Button: when clicked, it calls reverse_message()
 reverse_button = tk.Button(window, text="Reverse Message!",
-font=("Arial", 14),
-
-command=reverse_message)
+font=("Arial", 14), command=reverse_message)
 
 reverse_button.pack(pady=10)
 # Keeps the window open and waiting for clicks or typing
