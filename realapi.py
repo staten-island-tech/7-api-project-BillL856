@@ -26,6 +26,30 @@ window.title("Converter")
 window.geometry("500x750")
 window.resizable(False,False) 
 
+def units():
+
+    types = entry1.get()
+    unit = entry2.get()
+    unit2 = entry3.get()
+    quantity = entry4.get()    
+
+    result_label1.config(text=types)
+    result_label2.config(text=unit)
+    result_label3.config(text=unit2)
+    result_label4.config(text=quantity)
+
+    response = requests.get(f"https://api.unusualunits.com/convert/{types.lower()}/{unit.lower()}/{unit2.lower()}/{quantity}")
+    if response.status_code !=200:
+        print("Error")
+        return None
+    
+    data=response.json()
+    boo=data["result"]
+    result_label5.config(
+        text=f"Result: {boo}",
+        fg="greej"
+    )
+
 prompt1 = tk.Label(window, text="Type your measurement system below:", font=("Arial", 16))
 prompt1.pack(pady=10) 
 entry1 = tk.Entry(window, font=("Arial", 14), width=30)
@@ -54,26 +78,11 @@ entry4.pack(pady=5)
 result_label4 = tk.Label(window, text="", font=("Arial", 14, "bold"), fg="blue")
 result_label4.pack(pady=15)
 
-result_label_out=tk.Label(window, text="", font=("Arial", 16, "bold",), fg="green")
-result_label_out.pack(pady=20)
+result_label5=tk.Label(window, text="", font=("Arial", 18, "bold"), fg="green")
+result_label5.pack(pady=20)
 
-def units(type,unit,unit2,quantity):
-    
-    result_label1.config(text=type)
-    result_label2.config(text=unit)
-    result_label3.config(text=unit2)
-    result_label4.config(text=quantity)
-
-
-    response = requests.get(f"https://api.unusualunits.com/convert/{type.lower()}/{unit.lower()}/{unit2.lower()}/{quantity}")
-    if response.status_code !=200:
-        result_label_out.config("Error")
-        return None
-    
-    data=response.json()
-    boo=data["result"]
-    result_label_out.config(text=f"Result:{boo}")
-    
+click=tk.Button(window, text="CONVERT", font=("Arial", 14), command=units)
+click.pack(pady=10)
 
 window.mainloop()
 
