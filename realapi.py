@@ -47,7 +47,7 @@ def units():
     boo=data["result"]
     result_label5.config(
         text=f"Result: {boo}",
-        fg="greej"
+        fg="green"
     )
 
 prompt1 = tk.Label(window, text="Type your measurement system below:", font=("Arial", 16))
