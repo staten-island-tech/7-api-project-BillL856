@@ -40,8 +40,10 @@ def units():
 
     response = requests.get(f"https://api.unusualunits.com/convert/{types.lower()}/{unit.lower()}/{unit2.lower()}/{quantity}")
     if response.status_code !=200:
-        print("Error")
-        return None
+        result_label5.config(
+        text="Error. Try Again",
+        fg="green"
+        )
     
     data=response.json()
     boo=data["result"]['value']
@@ -85,5 +87,4 @@ click=tk.Button(window, text="CONVERT", font=("Arial", 14), command=units)
 click.pack(pady=10)
 
 window.mainloop()
-
 
