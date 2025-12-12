@@ -44,7 +44,7 @@ def units():
         return None
     
     data=response.json()
-    boo=data["result"]
+    boo=data["result"]['value']
     result_label5.config(
         text=f"Result: {boo}",
         fg="green"
