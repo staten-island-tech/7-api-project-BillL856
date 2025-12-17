@@ -44,6 +44,7 @@ def units():
         text="Error. Try Again",
         fg="green"
         )
+        return
     
     data=response.json()
     boo=data["result"]['value']
@@ -52,10 +53,15 @@ def units():
         fg="green"
     )
 
+options = ["area", "data", "energy", "length", "mass", "speed", "time", "volume"]
+
+select=tk.StringVar()
+select.set(options[0])
+
 prompt1 = tk.Label(window, text="Type your measurement system below:", font=("Arial", 16))
 prompt1.pack(pady=10) 
-entry1 = tk.Entry(window, font=("Arial", 14), width=30)
-entry1.pack(pady=5)
+entry1=tk.OptionMenu(window, select, *options)
+entry1.pack(padx=10, pady=10)
 result_label1 = tk.Label(window, text="", font=("Arial", 14, "bold"), fg="blue")
 result_label1.pack(pady=15)
 

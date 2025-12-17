@@ -33,4 +33,3 @@ reverse_button.pack(pady=10)
 window.mainloop()
 
 
-import requests
