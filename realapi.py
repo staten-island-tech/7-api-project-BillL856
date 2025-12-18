@@ -28,7 +28,7 @@ window.resizable(False,False)
 
 def units():
 
-    types = entry1.get()
+    types = select.get()
     unit = entry2.get()
     unit2 = entry3.get()
     quantity = entry4.get()    
